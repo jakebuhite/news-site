@@ -8,7 +8,16 @@
   },
   "author": "Jake Buhite",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakebuhite/news-site.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jakebuhite/news-site/issues"
+  },
+  "homepage": "https://github.com/jakebuhite/news-site#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1"
   }
 }
