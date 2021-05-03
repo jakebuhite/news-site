@@ -14,13 +14,20 @@ body {
     display: grid;
     width: 100vw;
     height: 100vh;
-    grid-template-columns: 25px auto 25px 300px 25px;
-    grid-template-rows: 45px 45px auto 45px 70px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(12, 1fr);
     grid-template-areas: 
     "header header header header header"
-    ". . . . ."
-    ". main . sidebar ."
-    ". . . . ."
+    "lsidebar main main main rsidebar"
+    "lsidebar main main main rsidebar"
+    "lsidebar main main main rsidebar"
+    "lsidebar main main main rsidebar"
+    "lsidebar main main main rsidebar"
+    "lsidebar main main main rsidebar"
+    "lsidebar main main main rsidebar"
+    "lsidebar main main main rsidebar"
+    "lsidebar main main main rsidebar"
+    "lsidebar main main main rsidebar"
     "footer footer footer footer footer";
 }
 .header {
@@ -46,7 +53,6 @@ body {
     border-radius: 25px;
 }
 .sidebar {
-    grid-area: sidebar;
     padding: 10px;
     background-color: #FAFAFA;
     border: 1px solid #FAFAFA;
@@ -60,6 +66,12 @@ body {
     border: 1px solid #282828;
     border-radius: 25px;
     text-align: center;
+}
+.sidebar.left {
+    grid-area: lsidebar;
+}
+.sidebar.right {
+    grid-area: rsidebar;
 }
 .footer {
     grid-area: footer;
@@ -76,9 +88,7 @@ a {
 
 /* Responsiveness */
 @media only screen and (max-width: 768px) {
-    
 }
 
 @media only screen and (max-width: 500px) {
-
 }
