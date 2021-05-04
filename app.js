@@ -1,7 +1,20 @@
 var express = require('express');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var app = express();
 var port = 80;
 var path = require('path');
+
+// For learning purposes:
+// Middleware defines a stack of actions that you
+// course through. You add layers to the middleware
+// stack through the use of <app>.use
+
+// Middleware for parsing bodies from URL
+app.use(express.urlencoded({extended: true}));
+
+// Middleware for parsing cookies from HTTP request
+app.use(cookieParser());
 
 // Sets view engine and pages folder
 app.set('view engine', 'ejs');
