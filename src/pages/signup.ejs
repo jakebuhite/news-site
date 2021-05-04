@@ -4,10 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Site</title>
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="/scripts/loading.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="header login">
+        <div class="small_title">News Site</div>
+        <div class="navbar">
+            <a href="/">Home</a>
+            <a href="/login">Login</a> <!-- Make this only visible to those who are not logged in -->
+            <a href="/signup">Signup</a> <!-- Make this only visible to those who are not logged in -->
+            <a href="/admin">Admin</a> <!-- Make this only visible to those with permission -->
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="login_form">
+            <div class="large_title login">Register</div>
+            <form action="GET">
+                <div class="felement">
+                    <label for="username">Username: </label><input type="text">
+                </div>
+                <div class="felement">
+                    <label for="password">Password: </label><input type="password">
+                </div>
+                <div class="felement">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer login">
+        <div class="small_title">&copy; Jake Buhite</div>
+        <div><a href="/contact">Contact Us</a></div>
     </div>
 </body>
 </html>
