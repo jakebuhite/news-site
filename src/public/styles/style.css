@@ -8,13 +8,14 @@
 body {
     color: #e8e8e8;
 }
+
 /* CSS for News Page */
 .container {
     display: grid;
     width: 100vw;
     height: 100vh;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 70px repeat(10, 1fr) 50px;
+    grid-template-rows: 0.5fr repeat(10, 1fr) 0.5fr;
     grid-template-areas: 
     "header header header header header"
     "lsidebar main main main rsidebar"
@@ -29,27 +30,67 @@ body {
     "lsidebar main main main rsidebar"
     "footer footer footer footer footer";
 }
+
+/* General CSS */
+.header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #282828;
+    width: 100%;
+}
+.small_title {
+    flex-grow: 1;
+}
+.large_title {
+    font-size: 72px;
+}
+.navbar a {
+    padding: 0 10px;
+}
+.footer {
+    grid-area: footer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    background-color: #282828;
+}
+a {
+    color: #8d7777;
+    text-decoration: none;
+}
+
+/* Homepage CSS */
 .news_content {
     grid-area: main;
-    width: 100%;
+    width: 90%;
     background-color: #FAFAFA;
     text-align: center;
     border: 1px solid #FAFAFA;
     border-radius: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .sidebar {
-    padding: 10px;
     background-color: #FAFAFA;
     border: 1px solid #FAFAFA;
     border-radius: 25px;
     width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .sidebar_header {
     padding: 10px;
-    margin: 15px 0;
     background-color: #282828;
     border: 1px solid #282828;
-    border-radius: 25px;
+    text-align: center;
+}
+.news_header {
+    padding: 10px;
+    background-color: #282828;
+    border: 1px solid #282828;
     text-align: center;
 }
 .sidebar.left {
@@ -86,37 +127,6 @@ body {
     background-color: #282828;
     border: 1px solid #282828;
     border-radius: 15px;
-}
-
-/* General CSS */
-.header {
-    grid-area: header;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #282828;
-    width: 100%;
-}
-.small_title {
-    flex-basis: 75%;
-}
-.large_title {
-    font-size: 72px;
-}
-.navbar a {
-    padding: 0 10px;
-}
-.footer {
-    grid-area: footer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: #282828;
-}
-a {
-    color: #8d7777;
-    text-decoration: none;
 }
 
 /* Responsiveness */
