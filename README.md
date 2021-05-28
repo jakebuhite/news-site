@@ -3,3 +3,8 @@ For this project, I plan on making a simple news site. It will be complete with 
 
 ### Technologies
 For this news site, I will be using Node.js, Express.js, Passport.js, and PostgreSQL. (Other technologies may be added in the future).
+
+### Installation
+Once you have downloaded and extracted the news-site folder, simply run the following commands:
+npm install
+node app.js
