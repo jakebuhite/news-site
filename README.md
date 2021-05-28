@@ -1,4 +1,4 @@
-# News Site (Very early stages)
+# News Site
 For this project, I plan on making a simple news site. It will be complete with a homepage, a page for each post, a login/signup page, and an admin panel. The goal of this site is to learn and practice express.js. In addition, this will give me the opportunity to improve my CSS skills. 
 
 ### Technologies
