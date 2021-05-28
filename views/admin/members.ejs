@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Site - Admin</title>
+    <link rel="stylesheet" href="/styles/astyles.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="/admin/">Dashboard</a></div>
+        <nav>
+            <ul>
+                <li><a href="/admin/news">News</a></li>
+                <li><a href="/admin/forms">Form</a></li>
+                <li><a href="/admin/members">Members</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Members</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Jake</td>
+                <td>jake@gmail.com</td>
+                <td>2 - <em>Admin</em></td>
+                <td>
+                    <a href="/editMember">Edit</a>
+                    <a href="/banMember">Ban</a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>John Doe</td>
+                <td>john.doe@gmail.com</td>
+                <td>1 - <em>User</em></td>
+                <td>
+                    <a href="/editMember">Edit</a>
+                    <a href="/banMember">Ban</a>
+                </td>
+            </tr>
+        </table>
+    </main>
+    <footer>
+        <a href="/" class="back-to-site">Back to Site</a>
+        <a href="/logout">Logout</a>
+    </footer>
+</body>
+</html>

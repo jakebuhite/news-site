@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>News Site</title>
+</head>
+<body>
+    <div class="wrapper hlayout">
+        <header>
+            <div class="logo">News Site</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login">Login</a></li> <!-- Disappear if user is logged in -->
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/admin/index">Admin</a></li> <!-- Disappear if user role != 2 -->
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="news-card" id="news1">
+                <div class="news-title">A Man Goes to New York</div>
+                <div class="news-date">By Jake at 5/23/2021 @ 9:08 PM</div>
+                <div class="news-avatar"><img src="/imgs/avatar.png" alt="Avatar" width="64px" height=auto></div>
+                <div class="news-content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus justo ex, ac imperdiet mi dictum nec. Maecenas malesuada luctus metus. Maecenas orci lorem, accumsan nec nibh quis, luctus venenatis mi. Duis pulvinar, arcu a condimentum semper, mauris tortor tempus ipsum, vitae ornare nibh ex ut diam. Etiam vulputate, massa vitae porta luctus, diam tellus dignissim enim, sed ultrices neque urna sed velit. Vivamus nec justo a ipsum cursus consectetur sed eu dui. Integer non dui ut metus dignissim egestas non in velit. In vel ante sapien. Nam ut volutpat tellus. Morbi sit amet auctor nisl, vitae rhoncus metus.
+                    Donec magna ex, maximus vitae tristique commodo, mollis malesuada risus. Proin blandit auctor purus. Donec placerat tortor at est rhoncus posuere. Curabitur id sapien faucibus, pretium neque sed, semper turpis. Nam interdum bibendum sem, eget imperdiet nunc hendrerit vel. Nunc sit amet nulla odio. Sed id ultrices odio. Quisque interdum, lacus ac viverra rhoncus, enim risus mollis urna, nec luctus tellus erat vitae felis. Proin interdum venenatis facilisis. Mauris mollis efficitur odio ac accumsan. Nunc sit amet imperdiet magna.
+                    Integer vitae purus sapien. Donec rutrum nibh et elementum vulputate. Nunc mattis erat purus. Suspendisse sollicitudin tincidunt mollis. Aliquam sit amet posuere diam. Nunc vel mauris eget neque eleifend cursus. Maecenas malesuada, dolor sed mollis tempor, ipsum tortor laoreet est, eget blandit arcu sapien sed ante. Nunc non leo sit amet ipsum tempor cursus. Curabitur sit amet tempus tellus. Sed blandit dictum viverra. Pellentesque vulputate elit nec ullamcorper sagittis. Sed blandit metus... 
+                </div>
+                <a href="/news?id=1"><div class="news-btn">Read More</div></a>
+            </div>
+            <div class="news-card" id="news2">
+                <div class="news-title">A Man Goes to New York</div>
+                <div class="news-date">By Jake at 5/23/2021 @ 9:08 PM</div>
+                <div class="news-avatar"><img src="/imgs/avatar.png" alt="Avatar" width="64px" height=auto></div>
+                <div class="news-content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus justo ex, ac imperdiet mi dictum nec. Maecenas malesuada luctus metus. Maecenas orci lorem, accumsan nec nibh quis, luctus venenatis mi. Duis pulvinar, arcu a condimentum semper, mauris tortor tempus ipsum, vitae ornare nibh ex ut diam. Etiam vulputate, massa vitae porta luctus, diam tellus dignissim enim, sed ultrices neque urna sed velit. Vivamus nec justo a ipsum cursus consectetur sed eu dui. Integer non dui ut metus dignissim egestas non in velit. In vel ante sapien. Nam ut volutpat tellus. Morbi sit amet auctor nisl, vitae rhoncus metus.
+                    Donec magna ex, maximus vitae tristique commodo, mollis malesuada risus. Proin blandit auctor purus. Donec placerat tortor at est rhoncus posuere. Curabitur id sapien faucibus, pretium neque sed, semper turpis. Nam interdum bibendum sem, eget imperdiet nunc hendrerit vel. Nunc sit amet nulla odio. Sed id ultrices odio. Quisque interdum, lacus ac viverra rhoncus, enim risus mollis urna, nec luctus tellus erat vitae felis. Proin interdum venenatis facilisis. Mauris mollis efficitur odio ac accumsan. Nunc sit amet imperdiet magna.
+                    Integer vitae purus sapien. Donec rutrum nibh et elementum vulputate. Nunc mattis erat purus. Suspendisse sollicitudin tincidunt mollis. Aliquam sit amet posuere diam. Nunc vel mauris eget neque eleifend cursus. Maecenas malesuada, dolor sed mollis tempor, ipsum tortor laoreet est, eget blandit arcu sapien sed ante. Nunc non leo sit amet ipsum tempor cursus. Curabitur sit amet tempus tellus. Sed blandit dictum viverra. Pellentesque vulputate elit nec ullamcorper sagittis. Sed blandit metus... 
+                </div>
+                <a href="/news?id=2"><div class="news-btn">Read More</div></a>
+            </div>
+            <div class="news-card" id="news3">
+                <div class="news-title">A Man Goes to New York</div>
+                <div class="news-date">By Jake at 5/23/2021 @ 9:08 PM</div>
+                <div class="news-avatar"><img src="/imgs/avatar.png" alt="Avatar" width="64px" height=auto></div>
+                <div class="news-content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus justo ex, ac imperdiet mi dictum nec. Maecenas malesuada luctus metus. Maecenas orci lorem, accumsan nec nibh quis, luctus venenatis mi. Duis pulvinar, arcu a condimentum semper, mauris tortor tempus ipsum, vitae ornare nibh ex ut diam. Etiam vulputate, massa vitae porta luctus, diam tellus dignissim enim, sed ultrices neque urna sed velit. Vivamus nec justo a ipsum cursus consectetur sed eu dui. Integer non dui ut metus dignissim egestas non in velit. In vel ante sapien. Nam ut volutpat tellus. Morbi sit amet auctor nisl, vitae rhoncus metus.
+                    Donec magna ex, maximus vitae tristique commodo, mollis malesuada risus. Proin blandit auctor purus. Donec placerat tortor at est rhoncus posuere. Curabitur id sapien faucibus, pretium neque sed, semper turpis. Nam interdum bibendum sem, eget imperdiet nunc hendrerit vel. Nunc sit amet nulla odio. Sed id ultrices odio. Quisque interdum, lacus ac viverra rhoncus, enim risus mollis urna, nec luctus tellus erat vitae felis. Proin interdum venenatis facilisis. Mauris mollis efficitur odio ac accumsan. Nunc sit amet imperdiet magna.
+                    Integer vitae purus sapien. Donec rutrum nibh et elementum vulputate. Nunc mattis erat purus. Suspendisse sollicitudin tincidunt mollis. Aliquam sit amet posuere diam. Nunc vel mauris eget neque eleifend cursus. Maecenas malesuada, dolor sed mollis tempor, ipsum tortor laoreet est, eget blandit arcu sapien sed ante. Nunc non leo sit amet ipsum tempor cursus. Curabitur sit amet tempus tellus. Sed blandit dictum viverra. Pellentesque vulputate elit nec ullamcorper sagittis. Sed blandit metus... 
+                </div>
+                <a href="/news?id=3"><div class="news-btn">Read More</div></a>
+            </div>
+        </main>
+        <div class="sidebar">
+            <div class="sidebar-card">
+                <div class="recent-posts">
+                    <div class="sidebar-header">Recent Posts</div>
+                    <ul>
+                        <li> <a href="/news">A Man Goes to New York</a></li>
+                        <li> <a href="/news">A Man Goes to New York</a></li>
+                        <li> <a href="/news">A Man Goes to New York</a></li>
+                    </ul>
+                </div>
+                <div class="site-stats">
+                    <div class="sidebar-header">Site Statistics</div>
+                    <p>Total Posts: 0</p>
+                    <p>Total Likes: 0</p>
+                    <p>Total Members: 0</p>
+                    <p>Newest Member: Jake</p>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="copyright">&copy; Jake Buhite</div>
+            <div class="contact-link"><a href="/contact">Contact Us</a></div>
+        </footer>
+    </div>
+</body>
+</html>

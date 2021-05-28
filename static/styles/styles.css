@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+* { 
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+body {
+    font-size: 16px;
+    color: #282828;
+}
+
+/* Base CSS for Wrapper */
+.wrapper {
+    display: grid;
+    min-height: 100vh;
+}
+
+/* Layout for home */
+.wrapper.hlayout {
+    grid-template-columns: 1fr 350px;
+    grid-template-rows: 65px 1fr 75px;
+    grid-template-areas:
+    "header header"
+    "main sidebar"
+    "footer footer";
+}
+
+/* Layout for login/signup/contact (form) pages */
+.wrapper.flayout {
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-rows: 65px 0.12fr 1fr 0.12fr 75px;
+    grid-template-areas:
+    "header header header"
+    ". . ."
+    ". main ."
+    ". . ."
+    "footer footer footer";
+}
+
+/* Layout for article pages */
+.wrapper.nlayout {
+    grid-template-columns: 0.2fr 1fr 0.2fr;
+    grid-template-rows: 65px 1fr 75px;
+    grid-template-areas:
+    "header header header"
+    ". main ."
+    "footer footer footer";
+}
+
+/* Base CSS */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    color: whitesmoke;
+    background-color: #282828;
+    grid-area: header;
+    padding: 0 25px;
+}
+nav li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 5px;
+}
+.logo {
+    flex-grow: 1;
+}
+main {
+    width: 100%;
+    grid-area: main;
+}
+a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+a:hover {
+    text-decoration: underline;
+}
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    color: whitesmoke;
+    background-color: #282828;
+    grid-area: footer;
+    padding: 0 25px;
+}
+.copyright {
+    flex-grow: 1;
+}
+
+/* CSS for homepage */
+.news-card {
+    overflow: hidden;
+    background-color: #e8e8e8;
+    margin: 15px 25px;
+    padding: 5px 5px 20px 5px;
+}
+.news-date {
+    float: left;
+}
+.news-avatar {
+    float: right;
+}
+.news-avatar, .news-date {
+    padding: 5px;
+}
+.news-content {
+    clear: both;
+    text-align: center;
+    width: 90%;
+    padding-bottom: 20px;
+}
+.news-btn {
+    float: right;
+    text-align: center;
+    padding: 5px;
+    border: 2px solid #282828;
+    border-radius: 15px;
+    background-color: #282828;
+    color: grey;
+    width: 150px;
+    margin-right: 5px;
+    transition: color 0.75s;
+}
+.news-btn:hover {
+    color: whitesmoke;
+}
+.sidebar {
+    width: 100%;
+    grid-area: sidebar;
+}
+.sidebar-card {
+    background-color: #e8e8e8;
+    margin: 15px 25px;
+}
+.sidebar-card .sidebar-header, .news-title {
+    text-align: center;
+    background-color: #282828;
+    padding: 10px;
+    color: whitesmoke;
+}
+.recent-posts li {
+    list-style-position: inside;
+    list-style-type: "\1F5E8";
+    padding: 5px;
+}
+.recent-posts li a {
+    color: #282828;
+}
+.recent-posts li a:hover {
+    text-decoration: underline;
+}
+.site-stats p {
+    padding: 0 5px;
+    line-height: 1.5em;
+}
+
+/* CSS for Login/Signup/Contact Pages */
+.form-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 10px;
+    background-color: #e8e8e8;
+    border: 2px solid #282828;
+    border-radius: 15px;
+}
+.form-card .info {
+    padding: 25px;
+}
+.form-card h1 {
+    text-decoration: underline;
+    font-size: 4.5em;
+    padding-bottom: 25px;
+}
+form {
+    text-align: center;
+}
+form p {
+    clear: both;
+    padding: 10px;
+}
+input, textarea {
+    display: block;
+}
+input[type=text], input[type=password], input[type=email], textarea {
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 15px;
+}
+input[type=submit] {
+    font-size: 1.15em;
+    margin-top: 10px;
+    background-color: #535353;
+    border: 1px solid #535353;
+    color: whitesmoke;
+    padding: 10px 15px;
+}
+input[type=submit]:hover {
+    background-color: #282828;
+    border: 1px solid #282828;
+}
+textarea {
+    resize: none;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+
+/* CSS for Article Page */
+article {   
+    display: flex;
+    flex-flow: row wrap;
+    background-color: #e8e8e8;
+    padding: 10px;
+}
+article h1 {
+    padding-bottom: 5px;
+    font-size: 1.75em;
+    line-height: 1.25em;
+}
+.a-author, time {
+    padding-bottom: 5px;
+}
+.a-content {
+    clear: both;
+    width: 90%;
+    padding: 15px 0;
+}
+.left-flex {
+    width: 60%;
+    text-align: left;
+}
+.right-flex {
+    width: 30%;
+    text-align: right;
+}
+.left-content, .right-content {
+    padding-bottom: 10px;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 900px) {
+    .wrapper.hlayout {
+        grid-template-columns: 1fr;
+        grid-template-rows: 65px 1fr 350px 75px;
+        grid-template-areas:
+        "header"
+        "main"
+        "sidebar"
+        "footer";
+    }
+    .wrapper.flayout {
+        grid-template-columns: 0.05fr 1fr 0.05fr;
+    }
+    .wrapper.nlayout {
+        grid-template-columns: 0.05fr 1fr 0.05fr;
+    }
+    article h1 {
+        font-size: 1.5em;
+    }
+}
+@media screen and (max-width: 600px) {
+    .wrapper.flayout {
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-areas:
+        "header header header"
+        ". . ."
+        ". main ."
+        ". . ."
+        "footer footer footer";
+    }
+    .form-card h1 {
+        font-size: 3.5em;
+    }
+    .wrapper.nlayout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    }
+    article h1 {
+        font-size: 1.35em;
+    }
+}

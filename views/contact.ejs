@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>News Site</title>
+</head>
+<body>
+    <div class="wrapper flayout">
+        <header>
+            <div class="logo">News Site</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login">Login</a></li> <!-- Disappear if user is logged in -->
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/admin/index">Admin</a></li> <!-- Disappear if user role != 2 -->
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="form-card">
+                <h1 style="padding-bottom: 0;">Contact Us</h1>
+                <form action=""> <!-- User authentication!!! -->
+                    <p>
+                        <label for="fname">Name: </label>
+                        <input type="text" id="fname" name="fname" required>
+                    </p>
+                    <p>
+                        <label for="email">Email: </label>
+                        <input type="email" id="email" name="email" required>
+                    </p>
+                    <p>
+                        <label for="message">Message: </label>
+                        <textarea name="message" id="message" cols="20" rows="10" required></textarea>
+                    </p>
+                        <input type="submit" value="Send Message">
+                </form>
+                <p class="info"><em>We will respond to your message within 24-48 hours.</em></p>
+            </div>
+        </main>
+        <footer>
+            <div class="copyright">&copy; Jake Buhite</div>
+            <div class="contact-link"><a href="/contact">Contact Us</a></div>
+        </footer>
+    </div>
+</body>
+</html>

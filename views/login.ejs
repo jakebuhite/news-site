@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>News Site</title>
+</head>
+<body>
+    <div class="wrapper flayout">
+        <header>
+            <div class="logo">News Site</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login">Login</a></li> <!-- Disappear if user is logged in -->
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/admin/index">Admin</a></li> <!-- Disappear if user role != 2 -->
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="form-card">
+                <h1>Login</h1>
+                <form action=""> <!-- User authentication!!! -->
+                    <p>
+                        <label for="username">Username: </label>
+                        <input type="text" id="username" name="username" required>
+                    </p>
+                    <p>
+                        <label for="password">Password: </label>
+                        <input type="password" id="password" name="password" required>
+                    </p>
+                        <input type="submit" value="Login">
+                </form>
+                <p class="info">Don't have an account? Register <a href="/signup" style="color: #282828"><strong>here</strong></a>.</p>
+            </div>
+        </main>
+        <footer>
+            <div class="copyright">&copy; Jake Buhite</div>
+            <div class="contact-link"><a href="/contact">Contact Us</a></div>
+        </footer>
+    </div>
+</body>
+</html>

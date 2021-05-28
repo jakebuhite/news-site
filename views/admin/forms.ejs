@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Site - Admin</title>
+    <link rel="stylesheet" href="/styles/astyles.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="/admin/">Dashboard</a></div>
+        <nav>
+            <ul>
+                <li><a href="/admin/news">News</a></li>
+                <li><a href="/admin/forms">Form</a></li>
+                <li><a href="/admin/members">Members</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Forms</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>john.doe@gmail.com</td>
+                <td>5/27/21</td>
+                <td>
+                    <a href="/viewform?id=1">View</a>
+                    <a href="/deleteForm">Delete</a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>John Doe</td>
+                <td>john.doe@gmail.com</td>
+                <td>5/27/21</td>
+                <td>
+                    <a href="/viewform?id=2">View</a>
+                    <a href="/deleteForm">Delete</a>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>John Doe</td>
+                <td>john.doe@gmail.com</td>
+                <td>5/27/21</td>
+                <td>
+                    <a href="/viewform?id=3">View</a>
+                    <a href="/deleteForm">Delete</a>
+                </td>
+            </tr>
+        </table>
+    </main>
+    <footer>
+        <a href="/" class="back-to-site">Back to Site</a>
+        <a href="/logout">Logout</a>
+    </footer>
+</body>
+</html>
