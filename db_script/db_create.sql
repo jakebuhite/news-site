@@ -3,24 +3,24 @@ CREATE DATABASE newssitedb;
 GO
 USE newssitedb;
 GO
-CREATE TABLE newssitedb.dbo.Users (
-    id int IDENTITY(1,1) PRIMARY KEY,
-    username varchar(255) NOT NULL,
-    email varchar(255) NOT NULL,
-    avatar varchar(255),
+CREATE TABLE Users (
+    id serial NOT NULL PRIMARY KEY, 
+    username varchar(255) NOT NULL, 
+    email varchar(255) NOT NULL, 
+    avatar varchar(255), 
     role int
 );
 GO
-CREATE TABLE newssitedb.dbo.News (
-    id int IDENTITY(1,1) PRIMARY KEY,
-    title varchar(255) NOT NULL,
-    author int,
-    releasedate datetime
+CREATE TABLE News (
+    id serial NOT NULL PRIMARY KEY, 
+    title varchar(255) NOT NULL, 
+    author int, 
+    release_date timestamp
 );
 GO 
-CREATE TABLE newssitedb.dbo.Forms (
-    id int IDENTITY(1,1) PRIMARY KEY,
+CREATE TABLE Forms (
+    id serial NOT NULL PRIMARY KEY,
     name varchar(255) NOT NULL,
-    email varchar(255) NOT NULL,
-    releasedate datetime
+    email varchar(255),
+    release_date timestamp
 );
