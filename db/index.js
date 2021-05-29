@@ -1,17 +1,13 @@
-const { Client } = require('pg');
-const { dbConfig } = require("./config");
+const { dbConfig } = require('../config/database');
+require("dotenv").config();
 
-module.exports = {
-    query: (text, params, callback) => {
-        return client.query(text, (err, res) => {
-            callback(err, res);
-        });
-    },
-    
-    getClient: (callback) => {
-        const client = new Client(dbConfig);
-        client.connect((err, client, done) => {
-            callback(err, client, done);
-        });
-    }
-};
+const { Pool } = require("pg");
+const isProduction = process.env.NODE_ENV == "production";
+const connectionString = `postgresql://${dbConfig.user}:${dbConfig.password}@${dbConfig.host}:${dbConfig.port}/${dbConfig.database}`;
+
+const pool = new Pool({
+    connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
+    ssl: isProduction
+});
+
+module.exports = { pool };

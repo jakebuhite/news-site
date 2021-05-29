@@ -1,16 +1,32 @@
-var express = require('express');
-var app = express();
-var port = 80;
-var path = require('path');
+require('dotenv').config();
+const express = require('express');
+const session = require('express-session');
+const passport = require('passport');
+const path = require('path');
 
-// For learning purposes:
-// Middleware defines a stack of actions that you
-// course through. You add layers to the middleware
-// stack through the use of <app>.use
+const app = express();
+const port = 80;
+
+const initializePassport = require('./config/passport');
+initializePassport(passport);
 
 // Sets view engine and pages folder
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+
+// Body Parser
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+// Init Passport (Authentication)
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Load Routes
 const index = require('./routes/index');
@@ -20,10 +36,10 @@ const admin = require('./routes/admin');
 app.use('/', index);
 app.use('/admin', admin);
 
-// Static folder location
+// Set static folder
 app.use(express.static(path.join(__dirname, '/static')));
 
 // Starts the server
-app.listen(80, function() {
-    console.log('Server started on port 80.');
+app.listen(port, function() {
+    console.log(`Server started on port ${port}.`);
 });

@@ -4,7 +4,7 @@
   "description": "A simple news site using express",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "Jake Buhite",
   "license": "ISC",
@@ -17,8 +17,13 @@
   },
   "homepage": "https://github.com/jakebuhite/news-site#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "pg": "^8.6.0"
   }
 }

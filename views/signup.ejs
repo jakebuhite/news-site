@@ -23,7 +23,14 @@
         <main>
             <div class="form-card">
                 <h1>Register</h1>
-                <form action=""> <!-- User authentication!!! -->
+                <ul>
+                    <% if(typeof errors != 'undefined') { %>
+                        <% errors.forEach(error => { %>
+                            <li><%= error.message %></li>
+                        <% }) %>
+                    <% } %>
+                </ul>
+                <form action="/signup" method="POST">
                     <p>
                         <label for="username">Username: </label>
                         <input type="text" id="username" name="username">

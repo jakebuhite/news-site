@@ -14,13 +14,17 @@ GO
 CREATE TABLE News (
     id serial NOT NULL PRIMARY KEY, 
     title varchar(255) NOT NULL, 
-    author int, 
-    release_date timestamp
+    author int,
+    content text, 
+    release_date TIMESTAMP DEFAULT Now()
 );
 GO 
 CREATE TABLE Forms (
     id serial NOT NULL PRIMARY KEY,
     name varchar(255) NOT NULL,
     email varchar(255),
-    release_date timestamp
+    content text,
+    release_date TIMESTAMP DEFAULT Now()
 );
+GO
+SET TIMEZONE='America/Los_angeles';

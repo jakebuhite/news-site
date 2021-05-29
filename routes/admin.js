@@ -18,8 +18,8 @@ router.get('/news', (req, res) => {
 });
 
 router.get('/viewform', (req, res) => {
-    res.render('admin/viewform');
+    var newsID = req.query.id;
+    res.render('admin/viewform', {id: newsID});
 });
-
 
 module.exports = router;
