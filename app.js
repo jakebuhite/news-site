@@ -14,27 +14,11 @@ app.set('views', path.join(__dirname, '/views'));
 
 // Load Routes
 const index = require('./routes/index');
-const contact = require('./routes/contact');
-const login = require('./routes/login');
-const signup = require('./routes/signup');
-const news = require('./routes/news');
-const admin = require('./routes/admin/index');
-const forms = require('./routes/admin/forms');
-const members = require('./routes/admin/members');
-const aNews = require('./routes/admin/news');
-const vForm = require('./routes/admin/viewform');
+const admin = require('./routes/admin');
 
 // Use Routes
 app.use('/', index);
-app.use('/contact', contact);
-app.use('/login', login);
-app.use('/signup', signup);
-app.use('/news', news);
 app.use('/admin', admin);
-app.use('/admin/forms', forms);
-app.use('/admin/members', members);
-app.use('/admin/news', aNews);
-app.use('/admin/viewform', vForm);
 
 // Static folder location
 app.use(express.static(path.join(__dirname, '/static')));
