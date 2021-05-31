@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <title>News Site</title>
 </head>
 <body>
@@ -21,39 +22,37 @@
             </nav>
         </header>
         <main>
-            <div class="news-card" id="news1">
-                <div class="news-title">A Man Goes to New York</div>
-                <div class="news-date">By Jake at 5/23/2021 @ 9:08 PM</div>
-                <div class="news-avatar"><img src="/imgs/avatar.png" alt="Avatar" width="64px" height=auto></div>
-                <div class="news-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus justo ex, ac imperdiet mi dictum nec. Maecenas malesuada luctus metus. Maecenas orci lorem, accumsan nec nibh quis, luctus venenatis mi. Duis pulvinar, arcu a condimentum semper, mauris tortor tempus ipsum, vitae ornare nibh ex ut diam. Etiam vulputate, massa vitae porta luctus, diam tellus dignissim enim, sed ultrices neque urna sed velit. Vivamus nec justo a ipsum cursus consectetur sed eu dui. Integer non dui ut metus dignissim egestas non in velit. In vel ante sapien. Nam ut volutpat tellus. Morbi sit amet auctor nisl, vitae rhoncus metus.
-                    Donec magna ex, maximus vitae tristique commodo, mollis malesuada risus. Proin blandit auctor purus. Donec placerat tortor at est rhoncus posuere. Curabitur id sapien faucibus, pretium neque sed, semper turpis. Nam interdum bibendum sem, eget imperdiet nunc hendrerit vel. Nunc sit amet nulla odio. Sed id ultrices odio. Quisque interdum, lacus ac viverra rhoncus, enim risus mollis urna, nec luctus tellus erat vitae felis. Proin interdum venenatis facilisis. Mauris mollis efficitur odio ac accumsan. Nunc sit amet imperdiet magna.
-                    Integer vitae purus sapien. Donec rutrum nibh et elementum vulputate. Nunc mattis erat purus. Suspendisse sollicitudin tincidunt mollis. Aliquam sit amet posuere diam. Nunc vel mauris eget neque eleifend cursus. Maecenas malesuada, dolor sed mollis tempor, ipsum tortor laoreet est, eget blandit arcu sapien sed ante. Nunc non leo sit amet ipsum tempor cursus. Curabitur sit amet tempus tellus. Sed blandit dictum viverra. Pellentesque vulputate elit nec ullamcorper sagittis. Sed blandit metus... 
-                </div>
-                <a href="/news?id=1"><div class="news-btn">Read More</div></a>
+            <ul><% if(typeof errors != 'undefined') { %>
+                    <% errors.forEach(error => { %>
+                        <li><%= error.message %></li>
+                    <% }) %>
+                <% } %></ul>
+            <ul><% if (messages.success_msg) { %>
+                        <li><%= messages.success_msg %></li>
+                <% } %></ul>
+
+            <!-- Load News -->
+            <% for (var i = 0; i < results.rowCount; i++) { %>
+            <div class="news-card" id="news<%= results.rows[i].id %>">
+                <div class="news-title"><%= results.rows[i].title %></div>
+                <div class="news-date" id="news-d<%= results.rows[i].id %>"></div>
+                <script>
+                    function getWords(str, count) {
+                        return str.split(" ").splice(0, count).join(" ");
+                    }
+                    document.getElementById("news-d<%= results.rows[i].id %>").innerHTML = "By <%= results.rows[i].username %> on " + getWords("<%= results.rows[i].date %>", 4);
+                </script>
+                <div class="news-avatar"><img src="/imgs/<%= results.rows[i].avatar %>" alt="Avatar" width="64px" height=auto></div>
+                <div class="news-content" id="news-c<%= results.rows[i].id %>"></div>
+                <script>
+                    function getWords(str, count) {
+                        return str.split(" ").splice(0, count).join(" ");
+                    }
+                    document.getElementById("news-c<%= results.rows[i].id %>").innerHTML = getWords("<%= results.rows[i].content %>", 250) + "...";
+                </script>
+                <a href="/news?id=<%= results.rows[i].id %>"><div class="news-btn">Read More</div></a>
             </div>
-            <div class="news-card" id="news2">
-                <div class="news-title">A Man Goes to New York</div>
-                <div class="news-date">By Jake at 5/23/2021 @ 9:08 PM</div>
-                <div class="news-avatar"><img src="/imgs/avatar.png" alt="Avatar" width="64px" height=auto></div>
-                <div class="news-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus justo ex, ac imperdiet mi dictum nec. Maecenas malesuada luctus metus. Maecenas orci lorem, accumsan nec nibh quis, luctus venenatis mi. Duis pulvinar, arcu a condimentum semper, mauris tortor tempus ipsum, vitae ornare nibh ex ut diam. Etiam vulputate, massa vitae porta luctus, diam tellus dignissim enim, sed ultrices neque urna sed velit. Vivamus nec justo a ipsum cursus consectetur sed eu dui. Integer non dui ut metus dignissim egestas non in velit. In vel ante sapien. Nam ut volutpat tellus. Morbi sit amet auctor nisl, vitae rhoncus metus.
-                    Donec magna ex, maximus vitae tristique commodo, mollis malesuada risus. Proin blandit auctor purus. Donec placerat tortor at est rhoncus posuere. Curabitur id sapien faucibus, pretium neque sed, semper turpis. Nam interdum bibendum sem, eget imperdiet nunc hendrerit vel. Nunc sit amet nulla odio. Sed id ultrices odio. Quisque interdum, lacus ac viverra rhoncus, enim risus mollis urna, nec luctus tellus erat vitae felis. Proin interdum venenatis facilisis. Mauris mollis efficitur odio ac accumsan. Nunc sit amet imperdiet magna.
-                    Integer vitae purus sapien. Donec rutrum nibh et elementum vulputate. Nunc mattis erat purus. Suspendisse sollicitudin tincidunt mollis. Aliquam sit amet posuere diam. Nunc vel mauris eget neque eleifend cursus. Maecenas malesuada, dolor sed mollis tempor, ipsum tortor laoreet est, eget blandit arcu sapien sed ante. Nunc non leo sit amet ipsum tempor cursus. Curabitur sit amet tempus tellus. Sed blandit dictum viverra. Pellentesque vulputate elit nec ullamcorper sagittis. Sed blandit metus... 
-                </div>
-                <a href="/news?id=2"><div class="news-btn">Read More</div></a>
-            </div>
-            <div class="news-card" id="news3">
-                <div class="news-title">A Man Goes to New York</div>
-                <div class="news-date">By Jake at 5/23/2021 @ 9:08 PM</div>
-                <div class="news-avatar"><img src="/imgs/avatar.png" alt="Avatar" width="64px" height=auto></div>
-                <div class="news-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus justo ex, ac imperdiet mi dictum nec. Maecenas malesuada luctus metus. Maecenas orci lorem, accumsan nec nibh quis, luctus venenatis mi. Duis pulvinar, arcu a condimentum semper, mauris tortor tempus ipsum, vitae ornare nibh ex ut diam. Etiam vulputate, massa vitae porta luctus, diam tellus dignissim enim, sed ultrices neque urna sed velit. Vivamus nec justo a ipsum cursus consectetur sed eu dui. Integer non dui ut metus dignissim egestas non in velit. In vel ante sapien. Nam ut volutpat tellus. Morbi sit amet auctor nisl, vitae rhoncus metus.
-                    Donec magna ex, maximus vitae tristique commodo, mollis malesuada risus. Proin blandit auctor purus. Donec placerat tortor at est rhoncus posuere. Curabitur id sapien faucibus, pretium neque sed, semper turpis. Nam interdum bibendum sem, eget imperdiet nunc hendrerit vel. Nunc sit amet nulla odio. Sed id ultrices odio. Quisque interdum, lacus ac viverra rhoncus, enim risus mollis urna, nec luctus tellus erat vitae felis. Proin interdum venenatis facilisis. Mauris mollis efficitur odio ac accumsan. Nunc sit amet imperdiet magna.
-                    Integer vitae purus sapien. Donec rutrum nibh et elementum vulputate. Nunc mattis erat purus. Suspendisse sollicitudin tincidunt mollis. Aliquam sit amet posuere diam. Nunc vel mauris eget neque eleifend cursus. Maecenas malesuada, dolor sed mollis tempor, ipsum tortor laoreet est, eget blandit arcu sapien sed ante. Nunc non leo sit amet ipsum tempor cursus. Curabitur sit amet tempus tellus. Sed blandit dictum viverra. Pellentesque vulputate elit nec ullamcorper sagittis. Sed blandit metus... 
-                </div>
-                <a href="/news?id=3"><div class="news-btn">Read More</div></a>
-            </div>
+            <% } %>
         </main>
         <div class="sidebar">
             <div class="sidebar-card">
@@ -67,7 +66,7 @@
                 </div>
                 <div class="site-stats">
                     <div class="sidebar-header">Site Statistics</div>
-                    <p>Total Posts: 0</p>
+                    <p>Total Posts: <%= results.rowCount %></p>
                     <p>Total Likes: 0</p>
                     <p>Total Members: 0</p>
                     <p>Newest Member: Jake</p>

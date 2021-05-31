@@ -1,70 +1,41 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const { pool } = require("../db/index");
 const passport = require('passport');
 
-router.get('/', (req, res) => {
-    res.render('index');
-});
+const user = require('../controllers/user');
+const form = require('../controllers/form');
+const article = require('../controllers/article');
+
+// GET
+router.get('/', article.getArticles);
+
+router.get('/news', article.getArticleById);
 
 router.get('/contact', (req, res) => {
     res.render('contact');
 });
 
-router.get('/news', (req, res) => {
-    var newsID = req.query.id;
-    res.render('news', {id: newsID});
-});
-
-// GET authentication
-router.get('/login', (req, res) => {
+router.get('/login', user.checkUserNotAuth, (req, res) => {
     res.render('login');
 });
 
-router.get('/signup', (req, res) => {
+router.get('/signup', user.checkUserNotAuth, (req, res) => {
     res.render('signup');
 });
 
-// POST authentication
-router.post('/login', passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login",
-})
-);
-
-router.post('/signup', async (req, res) => {
-    let { username, email, password } = req.body;
-    let errors = [];
-    if (password.length < 6) {
-        errors.push({message: "Password must be at least 6 characters"});
-    }
-    if (errors.length > 0) {
-        res.render('signup', { errors });
-    } else {
-        let hashedPassword = await bcrypt.hash(password, 10);
-        pool.query(
-            'SELECT * FROM users WHERE email = $1', [email], (err, results) => {
-                if (err) {
-                    throw err;
-                }
-                if (results.rows.length > 0) {
-                    errors.push({message: "This email is already in use"});
-                    res.render('register', { errors });
-                } else {
-                    pool.query(
-                        `INSERT INTO users (username, email, password) VALUES ($1, $2, $3)`, [username, email, hashedPassword], (err, results) => {
-                            if (err) {
-                                throw err;
-                            }
-                            req.flash('success_msg', "You are now registered. Please log in");
-                            res.redirect('/login');
-                        }
-                    );
-                }
-            } 
-        );
-    }
+router.get('/logout', user.checkUserAuth, (req, res) => {
+    req.logOut();
+    req.flash('success_msg', "You have logged out");
+    res.redirect('/');
 });
+
+// POST
+router.post('/login', 
+  passport.authenticate("local", { successRedirect: "/",
+                                   failureRedirect: "/login",
+                                   failureFlash: true })
+);
+router.post('/signup', createUser);
+router.post('/contact', createForm);
 
 module.exports = router;

@@ -1,5 +1,5 @@
-require('dotenv').config();
 const express = require('express');
+const flash = require('express-flash');
 const session = require('express-session');
 const passport = require('passport');
 const path = require('path');
@@ -15,18 +15,21 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: 'potatoes',
     resave: false,
     saveUninitialized: false
 }));
 
 // Body Parser
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Init Passport (Authentication)
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Express Flash
+app.use(flash());
 
 // Load Routes
 const index = require('./routes/index');

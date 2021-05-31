@@ -23,10 +23,10 @@
         <main>
             <div class="form-card">
                 <h1 style="padding-bottom: 0;">Contact Us</h1>
-                <form action="/contact" method="POST">
+                <form action="/contact" method="POST" onsubmit="return confirm('Are you sure you want to submit this form?');">
                     <p>
-                        <label for="fname">Name: </label>
-                        <input type="text" id="fname" name="fname" required>
+                        <label for="cname">Name: </label>
+                        <input type="text" id="cname" name="cname" required>
                     </p>
                     <p>
                         <label for="email">Email: </label>

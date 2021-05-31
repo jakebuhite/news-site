@@ -3,7 +3,7 @@ CREATE DATABASE newssitedb;
 GO
 USE newssitedb;
 GO
-CREATE TABLE Users (
+CREATE TABLE IF NOT EXISTS Users (
     id serial NOT NULL PRIMARY KEY, 
     username varchar(255) NOT NULL, 
     email varchar(255) NOT NULL, 
@@ -11,7 +11,7 @@ CREATE TABLE Users (
     role int
 );
 GO
-CREATE TABLE News (
+CREATE TABLE IF NOT EXISTS News (
     id serial NOT NULL PRIMARY KEY, 
     title varchar(255) NOT NULL, 
     author int,
@@ -19,7 +19,7 @@ CREATE TABLE News (
     release_date TIMESTAMP DEFAULT Now()
 );
 GO 
-CREATE TABLE Forms (
+CREATE TABLE IF NOT EXISTS Forms (
     id serial NOT NULL PRIMARY KEY,
     name varchar(255) NOT NULL,
     email varchar(255),
