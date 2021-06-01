@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/scripts/getWords.js"></script>
+    <script src="/scripts/formatDate.js"></script>
     <title>News Site</title>
 </head>
 <body>
@@ -36,20 +38,10 @@
             <div class="news-card" id="news<%= results.rows[i].id %>">
                 <div class="news-title"><%= results.rows[i].title %></div>
                 <div class="news-date" id="news-d<%= results.rows[i].id %>"></div>
-                <script>
-                    function getWords(str, count) {
-                        return str.split(" ").splice(0, count).join(" ");
-                    }
-                    document.getElementById("news-d<%= results.rows[i].id %>").innerHTML = "By <%= results.rows[i].username %> on " + getWords("<%= results.rows[i].date %>", 4);
-                </script>
+                <script>document.getElementById("news-d<%= results.rows[i].id %>").innerHTML = "By <%= results.rows[i].username %> on " + formatDate("<%= results.rows[i].date %>");</script>
                 <div class="news-avatar"><img src="/imgs/<%= results.rows[i].avatar %>" alt="Avatar" width="64px" height=auto></div>
                 <div class="news-content" id="news-c<%= results.rows[i].id %>"></div>
-                <script>
-                    function getWords(str, count) {
-                        return str.split(" ").splice(0, count).join(" ");
-                    }
-                    document.getElementById("news-c<%= results.rows[i].id %>").innerHTML = getWords("<%= results.rows[i].content %>", 250) + "...";
-                </script>
+                <script>document.getElementById("news-c<%= results.rows[i].id %>").innerHTML = getWords("<%= results.rows[i].content %>", 250) + "...";</script>
                 <a href="/news?id=<%= results.rows[i].id %>"><div class="news-btn">Read More</div></a>
             </div>
             <% } %>
@@ -58,11 +50,9 @@
             <div class="sidebar-card">
                 <div class="recent-posts">
                     <div class="sidebar-header">Recent Posts</div>
-                    <ul>
-                        <li> <a href="/news">A Man Goes to New York</a></li>
-                        <li> <a href="/news">A Man Goes to New York</a></li>
-                        <li> <a href="/news">A Man Goes to New York</a></li>
-                    </ul>
+                    <ul><% for (var i = 0; i < results.rowCount && i < 5; i++) { %>
+                        <li> <a href="/news?id=<%= results.rows[i].id %>"><%= results.rows[i].title %></a></li>
+                    <% } %></ul>
                 </div>
                 <div class="site-stats">
                     <div class="sidebar-header">Site Statistics</div>

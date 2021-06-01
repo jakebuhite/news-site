@@ -7,7 +7,7 @@ const form = require('../controllers/form');
 const article = require('../controllers/article');
 
 // GET
-router.get('/', article.getArticles);
+router.get('/', article.getHomepageArticles);
 
 router.get('/news', article.getArticleById);
 
@@ -35,7 +35,7 @@ router.post('/login',
                                    failureRedirect: "/login",
                                    failureFlash: true })
 );
-router.post('/signup', createUser);
-router.post('/contact', createForm);
+router.post('/signup', user.createUser);
+router.post('/contact', form.createForm);
 
 module.exports = router;

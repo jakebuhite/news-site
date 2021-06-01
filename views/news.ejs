@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/styles.css">
+    <script src="/scripts/getWords.js"></script>
+    <script src="/scripts/formatDate.js"></script>
     <title>News Site</title>
 </head>
 <body>
@@ -27,12 +29,7 @@
                     <div class="a-author"><%= results.rows[0].username %></div>
                     <time id="time"></time>
                 </div>
-                <script>
-                    function getWords(str, count) {
-                        return str.split(" ").splice(0, count).join(" ");
-                    }
-                    document.getElementById("time").innerHTML = getWords("<%= results.rows[0].date %>", 4);
-                </script>
+                <script>document.getElementById("time").innerHTML = formatDate("<%= results.rows[0].date %>");</script>
                 <div class="right-flex">
                     <div class="a-avatar"><img src="/imgs/<%= results.rows[0].avatar %>" alt="Avatar" width="64px" height=auto></div>
                 </div>

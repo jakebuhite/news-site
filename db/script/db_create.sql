@@ -26,5 +26,3 @@ CREATE TABLE IF NOT EXISTS Forms (
     content text,
     release_date TIMESTAMP DEFAULT Now()
 );
-GO
-SET TIMEZONE='America/Los_angeles';
