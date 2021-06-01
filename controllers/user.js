@@ -46,21 +46,24 @@ module.exports = {
     },
     checkUserAuth: (req, res, next) => {
         if (req.isAuthenticated()) {
-            return next();
+            res.locals.isLoggedIn = true;
+        } else {
+            res.locals.isLoggedIn = false;
         }
-        // Add flash message: (Not logged in)
-        res.redirect('/login');
+        next();
     },
     checkUserNotAuth: (req, res, next) => {
         if (!req.isAuthenticated()) {
+            res.locals.isLoggedIn = false;
             return next();
         }
         // Add flash message: (Already logged in)
+        res.locals.isLoggedIn = true;
         res.redirect('/');
     },
     checkUserRole: (req, res, next) => {
         if (req.isAuthenticated()) {
-            if (req.user.role == 2) {
+            if (req.user.role === 2) {
                 return next();
             } else {
                 res.redirect("/");

@@ -10,18 +10,7 @@
 </head>
 <body>
     <div class="wrapper nlayout">
-        <header>
-            <div class="logo">News Site</div>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/login">Login</a></li> <!-- Disappear if user is logged in -->
-                    <li><a href="/contact">Contact</a></li>
-                    <li><a href="/admin/">Admin</a></li> <!-- Disappear if user role != 2 -->
-                    <li><a href="/logout">Logout</a></li>
-                </ul>
-            </nav>
-        </header>
+        <%- include('partials/header.ejs') %>
         <main>
             <article>
                 <div class="left-flex">
@@ -38,10 +27,7 @@
             </article>
             <a href="/"><div class="news-btn" style="float: left; margin: 10px 5px;">Go Back</div></a>
         </main>
-        <footer>
-            <div class="copyright">&copy; Jake Buhite</div>
-            <div class="contact-link"><a href="/contact">Contact Us</a></div>
-        </footer>
+        <%- include('partials/footer.ejs') %>
     </div>
 </body>
 </html>

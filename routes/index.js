@@ -7,26 +7,31 @@ const form = require('../controllers/form');
 const article = require('../controllers/article');
 
 // GET
-router.get('/', article.getHomepageArticles);
+router.get('/', user.checkUserAuth, article.getHomepageArticles);
 
-router.get('/news', article.getArticleById);
+router.get('/news', user.checkUserAuth, article.getArticleById);
 
-router.get('/contact', (req, res) => {
-    res.render('contact');
+router.get('/contact', user.checkUserAuth, (req, res) => { 
+    res.render('contact', { isLoggedIn: res.locals.isLoggedIn }); 
 });
 
-router.get('/login', user.checkUserNotAuth, (req, res) => {
-    res.render('login');
+router.get('/login', user.checkUserNotAuth, (req, res) => { 
+    res.render('login', { isLoggedIn: res.locals.isLoggedIn }); 
 });
 
 router.get('/signup', user.checkUserNotAuth, (req, res) => {
-    res.render('signup');
+    res.render('signup', { isLoggedIn: res.locals.isLoggedIn }); 
 });
 
 router.get('/logout', user.checkUserAuth, (req, res) => {
-    req.logOut();
-    req.flash('success_msg', "You have logged out");
-    res.redirect('/');
+    if (res.locals.isLoggedIn === false) {
+        // Add flash message: (Not logged in)
+        res.redirect('/login');
+    } else {
+        req.logOut();
+        req.flash('success_msg', "You have logged out");
+        res.redirect('/');
+    }
 });
 
 // POST
