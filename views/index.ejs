@@ -23,15 +23,15 @@
                 <% } %></ul>
 
             <!-- Load News -->
-            <% for (var i = 0; i < results.rowCount; i++) { %>
-            <div class="news-card" id="news<%= results.rows[i].id %>">
-                <div class="news-title"><%= results.rows[i].title %></div>
-                <div class="news-date" id="news-d<%= results.rows[i].id %>"></div>
-                <script>document.getElementById("news-d<%= results.rows[i].id %>").innerHTML = "By <%= results.rows[i].username %> on " + formatDate("<%= results.rows[i].date %>");</script>
-                <div class="news-avatar"><img src="/imgs/<%= results.rows[i].avatar %>" alt="Avatar" width="64px" height=auto></div>
-                <div class="news-content" id="news-c<%= results.rows[i].id %>"></div>
-                <script>document.getElementById("news-c<%= results.rows[i].id %>").innerHTML = getWords("<%= results.rows[i].content %>", 250) + "...";</script>
-                <a href="/news?id=<%= results.rows[i].id %>"><div class="news-btn">Read More</div></a>
+            <% for (var i = 0; i < newsResults.rowCount; i++) { %>
+            <div class="news-card" id="news<%= newsResults.rows[i].id %>">
+                <div class="news-title"><%= newsResults.rows[i].title %></div>
+                <div class="news-date" id="news-d<%= newsResults.rows[i].id %>"></div>
+                <script>document.getElementById("news-d<%= newsResults.rows[i].id %>").innerHTML = "By <%= newsResults.rows[i].username %> on " + formatDate("<%= newsResults.rows[i].date %>");</script>
+                <div class="news-avatar"><img src="/imgs/<%= newsResults.rows[i].avatar %>" alt="Avatar" width="64px" height=auto></div>
+                <div class="news-content" id="news-c<%= newsResults.rows[i].id %>"></div>
+                <script>document.getElementById("news-c<%= newsResults.rows[i].id %>").innerHTML = getWords("<%= newsResults.rows[i].content %>", 250) + "...";</script>
+                <a href="/news?id=<%= newsResults.rows[i].id %>"><div class="news-btn">Read More</div></a>
             </div>
             <% } %>
         </main>
@@ -39,16 +39,16 @@
             <div class="sidebar-card">
                 <div class="recent-posts">
                     <div class="sidebar-header">Recent Posts</div>
-                    <ul><% for (var i = 0; i < results.rowCount && i < 5; i++) { %>
-                        <li> <a href="/news?id=<%= results.rows[i].id %>"><%= results.rows[i].title %></a></li>
+                    <ul><% for (var i = 0; i < newsResults.rowCount && i < 5; i++) { %>
+                        <li> <a href="/news?id=<%= newsResults.rows[i].id %>"><%= newsResults.rows[i].title %></a></li>
                     <% } %></ul>
                 </div>
                 <div class="site-stats">
                     <div class="sidebar-header">Site Statistics</div>
-                    <p>Total Posts: <%= results.rowCount %></p>
+                    <p>Total Posts: <%= newsResults.rowCount %></p>
                     <p>Total Likes: 0</p>
-                    <p>Total Members: 0</p>
-                    <p>Newest Member: Jake</p>
+                    <p>Total Members: <%= userResults.rowCount %></p>
+                    <p>Newest Member: <%= userResults.rows[0].username %></p>
                 </div>
             </div>
         </div>

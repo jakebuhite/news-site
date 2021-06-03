@@ -20,4 +20,14 @@ router.get('/viewform', user.checkUserRole, (req, res) => {
     res.render('admin/viewform', {id: newsID});
 });
 
+router.get('/deleteform', user.checkUserRole, form.deleteForm);
+router.get('/deletenews', user.checkUserRole, article.deleteArticle);
+router.get('deleteuser', user.checkUserRole, user.deleteUser);
+
+router.get('/editnews', user.checkUserRole, article.getArticleByIDAdmin);
+router.get('/edituser', user.checkUserRole, user.getUserByID);
+
+router.post('/editnews', user.checkUserRole, article.editArticle);
+router.post('/edituser', user.checkUserRole, user.editUser);
+
 module.exports = router;

@@ -7,7 +7,7 @@ const form = require('../controllers/form');
 const article = require('../controllers/article');
 
 // GET
-router.get('/', user.checkUserAuth, article.getHomepageArticles);
+router.get('/', user.checkUserAuth, article.getHomepageInfo);
 
 router.get('/news', user.checkUserAuth, article.getArticleById);
 

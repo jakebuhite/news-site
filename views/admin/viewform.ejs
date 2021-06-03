@@ -7,16 +7,7 @@
     <link rel="stylesheet" href="/styles/astyles.css">
 </head>
 <body>
-    <header>
-        <div class="logo"><a href="/admin/">Dashboard</a></div>
-        <nav>
-            <ul>
-                <li><a href="/admin/news">News</a></li>
-                <li><a href="/admin/forms">Form</a></li>
-                <li><a href="/admin/members">Members</a></li>
-            </ul>
-        </nav>
-    </header>
+    <%- include('../partials/aheader.ejs') %>
     <main>
         <div class="form-viewer">
             <h1>Form #1</h1>
@@ -28,9 +19,6 @@
         </div>
         <a href="/admin/forms"><div class="go-back-btn" style="float: left; margin: 10px 5px;">Go Back</div></a>
     </main>
-    <footer>
-        <a href="/" class="back-to-site">Back to Site</a>
-        <a href="/logout">Logout</a>
-    </footer>
+    <%- include('../partials/afooter.ejs') %>
 </body>
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Site - Admin</title>
+    <link rel="stylesheet" href="/styles/astyles.css">
+</head>
+<body>
+    <%- include('../partials/aheader.ejs') %>
+    <main>
+        <div class="form-card">
+            <h1 style="padding-bottom: 0;">Edit Member</h1>
+            <form action="/admin/edituser?id=<%= results.rows[0].id %>" method="POST" onsubmit="return confirm('Are you sure you want to make these changes?');">
+                <p>
+                    <label for="username">Username: </label>
+                    <input type="text" id="username" name="username" value="<%= results.rows[0].username %>" required>
+                </p>
+                <p>
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" name="email" value="<%= results.rows[0].email %>" required>
+                </p>
+                <p>
+                    <label for="role">Role: </label>
+                    <select name="role" id="role">
+                        <% if (results.rows[0].role === 1) { %>
+                        <option value="1" selected>Member</option>
+                        <option value="2">Admin</option>
+                        <% } else { %>
+                        <option value="1">Member</option>
+                        <option value="2" selected>Admin</option>
+                        <% } %>
+                    </select>
+                </p>
+                    <input type="submit" value="Edit User">
+            </form>
+        </div>
+    </main>
+    <%- include('../partials/afooter.ejs') %>
+</body>
+</html>

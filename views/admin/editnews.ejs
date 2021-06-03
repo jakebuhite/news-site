@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Site - Admin</title>
+    <link rel="stylesheet" href="/styles/astyles.css">
+</head>
+<body>
+    <%- include('../partials/aheader.ejs') %>
+    <main>
+        <div class="form-card">
+            <h1 style="padding-bottom: 0;">Edit News</h1>
+            <form action="/admin/editnews?id=<%= results.rows[0].id %>" method="POST" onsubmit="return confirm('Are you sure you want to make these changes?');">
+                <p>
+                    <label for="title">Title: </label>
+                    <input type="text" id="title" name="title" value="<%= results.rows[0].title %>" required>
+                </p>
+                <p>
+                    <label for="message">Message: </label>
+                    <textarea name="message" id="message" cols="20" rows="10" required><%= results.rows[0].content %></textarea>
+                </p>
+                    <input type="submit" value="Edit News">
+            </form>
+        </div>
+    </main>
+    <%- include('../partials/afooter.ejs') %>
+</body>
+</html>

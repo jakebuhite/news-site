@@ -5,18 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Site - Admin</title>
     <link rel="stylesheet" href="/styles/astyles.css">
+    <script src="/scripts/formatDate.js"></script>
 </head>
 <body>
-    <header>
-        <div class="logo"><a href="/admin/">Dashboard</a></div>
-        <nav>
-            <ul>
-                <li><a href="/admin/news">News</a></li>
-                <li><a href="/admin/forms">Form</a></li>
-                <li><a href="/admin/members">Members</a></li>
-            </ul>
-        </nav>
-    </header>
+    <%- include('../partials/aheader.ejs') %>
     <main>
         <h1>Forms</h1>
         <table>
@@ -27,41 +19,21 @@
                 <th>Date</th>
                 <th>Actions</th>
             </tr>
+            <% for (var i = 0; i < results.rowCount; i++) { %>
             <tr>
-                <td>1</td>
-                <td>John Doe</td>
-                <td>john.doe@gmail.com</td>
-                <td>5/27/21</td>
+                <td id="id<%= i+1 %>"><%= results.rows[i].id %></td>
+                <td id="name<%= i+1 %>"><%= results.rows[i].name %></td>
+                <td id="email<%= i+1 %>"><%= results.rows[i].email %></td>
+                <td id="date<%= i+1 %>"></td>
+                <script>document.getElementById("date<%= i+1 %>").innerHTML = formatDate("<%= results.rows[i].date %>");</script>
                 <td>
-                    <a href="/admin/viewform?id=1">View</a>
-                    <a href="/deleteForm">Delete</a>
+                    <a href="/admin/viewform?id=<%= results.rows[i].id %>">View</a>
+                    <a href="/admin/deleteform?id=<%= results.rows[i].id %>">Delete</a>
                 </td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>John Doe</td>
-                <td>john.doe@gmail.com</td>
-                <td>5/27/21</td>
-                <td>
-                    <a href="/admin/viewform?id=2">View</a>
-                    <a href="/deleteForm">Delete</a>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>John Doe</td>
-                <td>john.doe@gmail.com</td>
-                <td>5/27/21</td>
-                <td>
-                    <a href="/admin/viewform?id=3">View</a>
-                    <a href="/deleteForm">Delete</a>
-                </td>
-            </tr>
+            <% } %>
         </table>
     </main>
-    <footer>
-        <a href="/" class="back-to-site">Back to Site</a>
-        <a href="/logout">Logout</a>
-    </footer>
+    <%- include('../partials/afooter.ejs') %>
 </body>
 </html>

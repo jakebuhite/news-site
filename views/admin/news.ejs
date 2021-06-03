@@ -5,18 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Site - Admin</title>
     <link rel="stylesheet" href="/styles/astyles.css">
+    <script src="/scripts/formatDate.js"></script>
 </head>
 <body>
-    <header>
-        <div class="logo"><a href="/admin/">Dashboard</a></div>
-        <nav>
-            <ul>
-                <li><a href="/admin/news">News</a></li>
-                <li><a href="/admin/forms">Form</a></li>
-                <li><a href="/admin/members">Members</a></li>
-            </ul>
-        </nav>
-    </header>
+    <%- include('../partials/aheader.ejs') %>
     <main>
         <h1>News</h1>
         <table>
@@ -27,44 +19,22 @@
                 <th>Date</th>
                 <th>Actions</th>
             </tr>
+            <% for (var i = 0; i < results.rowCount; i++) { %>
             <tr>
-                <td>1</td>
-                <td>A Man Goes to New York</td>
-                <td>Jake</td>
-                <td>5/23/21</td>
+                <td id="id<%= i+1 %>"><%= results.rows[i].id %></td>
+                <td id="title<%= i+1 %>"><%= results.rows[i].title %></td>
+                <td id="author<%= i+1 %>"><%= results.rows[i].username %></td>
+                <td id="date<%= i+1 %>"></td>
+                <script>document.getElementById("date<%= i+1 %>").innerHTML = formatDate("<%= results.rows[i].date %>");</script>
                 <td>
-                    <a href="../news?id=1">View</a>
-                    <a href="/editNews">Edit</a>
-                    <a href="/deleteNews">Delete</a>
+                    <a href="/news?id=<%= results.rows[i].id %>">View</a>
+                    <a href="/admin/editnews?id=<%= results.rows[i].id %>">Edit</a>
+                    <a href="/admin/deletenews?id=<%= results.rows[i].id %>">Delete</a>
                 </td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>A Man Goes to New York</td>
-                <td>Jake</td>
-                <td>5/23/21</td>
-                <td>
-                    <a href="../news?id=2">View</a>
-                    <a href="/editNews">Edit</a>
-                    <a href="/deleteNews">Delete</a>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>A Man Goes to New York</td>
-                <td>Jake</td>
-                <td>5/23/21</td>
-                <td>
-                    <a href="../news?id=3">View</a>
-                    <a href="/editNews">Edit</a>
-                    <a href="/deleteNews">Delete</a>
-                </td>
-            </tr>
+            <% } %>
         </table>
     </main>
-    <footer>
-        <a href="/" class="back-to-site">Back to Site</a>
-        <a href="/logout">Logout</a>
-    </footer>
+    <%- include('../partials/afooter.ejs') %>
 </body>
 </html>

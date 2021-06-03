@@ -7,16 +7,7 @@
     <link rel="stylesheet" href="/styles/astyles.css">
 </head>
 <body>
-    <header>
-        <div class="logo"><a href="/admin/">Dashboard</a></div>
-        <nav>
-            <ul>
-                <li><a href="/admin/news">News</a></li>
-                <li><a href="/admin/forms">Form</a></li>
-                <li><a href="/admin/members">Members</a></li>
-            </ul>
-        </nav>
-    </header>
+    <%- include('../partials/aheader.ejs') %>
     <main>
         <h1>Members</h1>
         <table>
@@ -27,31 +18,20 @@
                 <th>Role</th>
                 <th>Actions</th>
             </tr>
+            <% for (var i = 0; i < results.rowCount; i++) { %>
             <tr>
-                <td>1</td>
-                <td>Jake</td>
-                <td>jake@gmail.com</td>
-                <td>2 - <em>Admin</em></td>
+                <td id="id<%= i+1 %>"><%= results.rows[i].id %></td>
+                <td id="username<%= i+1 %>"><%= results.rows[i].username %></td>
+                <td id="email<%= i+1 %>"><%= results.rows[i].email %></td>
+                <td id="role<%= i+1 %>"><%= results.rows[i].role %></td>
                 <td>
-                    <a href="/editMember">Edit</a>
-                    <a href="/banMember">Ban</a>
+                    <a href="/admin/edituser?id=<%= results.rows[i].id %>">Edit</a>
+                    <a href="/admin/banuser?id=<%= results.rows[i].id %>">Ban</a>
                 </td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>John Doe</td>
-                <td>john.doe@gmail.com</td>
-                <td>1 - <em>User</em></td>
-                <td>
-                    <a href="/editMember">Edit</a>
-                    <a href="/banMember">Ban</a>
-                </td>
-            </tr>
+            <% } %>
         </table>
     </main>
-    <footer>
-        <a href="/" class="back-to-site">Back to Site</a>
-        <a href="/logout">Logout</a>
-    </footer>
+    <%- include('../partials/afooter.ejs') %>
 </body>
 </html>
