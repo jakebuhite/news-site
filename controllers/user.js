@@ -47,10 +47,9 @@ module.exports = {
     },
     createUser: async (req, res) => {
         let { username, email, password } = req.body;
-        let errors = [];
         if (password.length < 6) {
-            errors.push({message: "Password must be at least 6 characters"});
-            res.render('signup', { errors });
+            req.flash('error_msg', "Password must be at least 6 characters");
+            res.redirect('/signup');
         } else {
             let hashedPassword = await bcrypt.hash(password, 10);
             let avatar = 'avatar.png';
@@ -58,8 +57,8 @@ module.exports = {
                 'SELECT * FROM users WHERE email = $1', [email], (err, results) => {
                     if (err) { throw err; }
                     if (results.rows.length > 0) {
-                        errors.push({message: "This email is already in use"});
-                        res.render('signup', { errors });
+                        req.flash('error_msg', "This email is already in use");
+                        res.redirect('/signup');
                     } else {
                         pool.query(
                             `INSERT INTO users (username, email, password, avatar) VALUES ($1, $2, $3, $4)`, [username, email, hashedPassword, avatar], (err, results) => {

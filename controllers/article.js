@@ -2,12 +2,11 @@ const { pool } = require("../db/index");
 
 module.exports = {
     getArticles: (req, res) => {
-        let errors = [];
         pool.query(
             `SELECT news.id, news.title, news.content, news.date, users.username, users.avatar FROM users INNER JOIN news ON news.author = users.id ORDER BY news.id`, (err, results) => {
                 if (err) { throw err; }
                 if (results.rows.length == 0) {
-                    errors.push({message: "No articles have been published"});
+                    req.flash('error_msg', "No articles have been published");
                     res.render('admin/news', { errors });
                 } else {
                     res.render('admin/news', { results });
@@ -16,18 +15,19 @@ module.exports = {
         );
     },
     getHomepageInfo: (req, res) => {
-        let errors = [];
+        let noNews = false;
         pool.query(
             `SELECT news.id, news.title, news.content, news.date, users.username, users.avatar FROM users INNER JOIN news ON news.author = users.id ORDER BY news.id DESC`, (newsErr, newsResults) => {
                 if (newsErr) { throw newsErr; }
                 if (newsResults.rows.length == 0) {
-                    errors.push({message: "No articles have been published"});
+                    req.flash('error_msg', "No articles have been published");
+                    noNews = true;
                 }
                 pool.query(
                     `SELECT users.username FROM users ORDER By users.id DESC`, (userErr, userResults) => {
                         if (userErr) { throw userErr; }
-                        if (errors.length > 0) {
-                            res.render('index', { errors, userResults });
+                        if (noNews === true) {
+                            res.render('index', { userResults });
                         } else {
                             res.render('index', { newsResults, userResults });
                         }

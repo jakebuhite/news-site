@@ -12,6 +12,7 @@
         <main>
             <div class="form-card">
                 <h1 style="padding-bottom: 0;">Contact Us</h1>
+                <%- include('partials/statuses.ejs') %>
                 <form action="/contact" method="POST" onsubmit="return confirm('Are you sure you want to submit this form?');">
                     <p>
                         <label for="cname">Name: </label>

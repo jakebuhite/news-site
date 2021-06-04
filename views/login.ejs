@@ -12,16 +12,7 @@
         <main>
             <div class="form-card">
                 <h1>Login</h1>
-                <ul>
-                    <% if (messages.success_msg) { %>
-                            <li><%= messages.success_msg %></li>
-                    <% } %> 
-                </ul>
-                <ul>
-                    <% if (messages.error) { %>
-                        <li><%= messages.error %></li>
-                    <% } %>
-                </ul>
+                <%- include('partials/statuses.ejs') %>
                 <form action="/login" method="POST">
                     <p>
                         <label for="username">Username: </label>

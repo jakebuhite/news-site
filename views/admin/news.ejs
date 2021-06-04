@@ -8,9 +8,10 @@
     <script src="/scripts/formatDate.js"></script>
 </head>
 <body>
-    <%- include('../partials/aheader.ejs') %>
+    <%- include('../partials/admin/header.ejs') %>
     <main>
         <h1>News</h1>
+        <%- include('../partials/statuses.ejs') %>
         <table>
             <tr>
                 <th>ID</th>
@@ -35,6 +36,6 @@
             <% } %>
         </table>
     </main>
-    <%- include('../partials/afooter.ejs') %>
+    <%- include('../partials/admin/footer.ejs') %>
 </body>
 </html>

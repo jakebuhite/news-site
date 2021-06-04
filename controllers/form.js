@@ -4,13 +4,12 @@ const user = require('../controllers/user');
 
 module.exports = {
     getForms: (req, res) => {
-        let errors = [];
         pool.query(
             `SELECT * FROM forms`, (err, results) => {
                 if (err) { throw err; }
                 if (results.rows.length == 0) {
-                    errors.push({message: "No forms have been completed"});
-                    res.render('admin/forms', { errors });
+                    req.flash('error_msg', "No forms have been completed");
+                    res.render('admin/forms');
                 } else {
                     res.render('admin/forms', { results });
                 }

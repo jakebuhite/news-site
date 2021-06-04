@@ -12,13 +12,7 @@
         <main>
             <div class="form-card">
                 <h1>Register</h1>
-                <ul>
-                    <% if(typeof errors != 'undefined') { %>
-                        <% errors.forEach(error => { %>
-                            <li><%= error.message %></li>
-                        <% }) %>
-                    <% } %>
-                </ul>
+                <%- include('partials/statuses.ejs') %>
                 <form action="/signup" method="POST">
                     <p>
                         <label for="username">Username: </label>

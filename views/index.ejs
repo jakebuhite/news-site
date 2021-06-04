@@ -13,15 +13,7 @@
     <div class="wrapper hlayout">
         <%- include('partials/header.ejs') %>
         <main>
-            <ul><% if(typeof errors != 'undefined') { %>
-                    <% errors.forEach(error => { %>
-                        <li><%= error.message %></li>
-                    <% }) %>
-                <% } %></ul>
-            <ul><% if (messages.success_msg) { %>
-                        <li><%= messages.success_msg %></li>
-                <% } %></ul>
-
+            <%- include('partials/statuses.ejs') %>
             <!-- Load News -->
             <% for (var i = 0; i < newsResults.rowCount; i++) { %>
             <div class="news-card" id="news<%= newsResults.rows[i].id %>">
