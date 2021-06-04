@@ -42,6 +42,11 @@ app.use('/admin', admin);
 // Set static folder
 app.use(express.static(path.join(__dirname, '/static')));
 
+// 404 Route
+app.use((req, res, next) => {
+    res.status(404).render('404');
+});
+
 // Starts the server
 app.listen(port, function() {
     console.log(`Server started on port ${port}.`);
