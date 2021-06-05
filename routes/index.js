@@ -1,29 +1,34 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-
 const user = require('../controllers/user');
 const form = require('../controllers/form');
 const article = require('../controllers/article');
+const auth = require('../middleware/auth');
 
-// GET
-router.get('/', user.checkUserAuth, article.getHomepageInfo);
+// GET (Index)
+router.get('/', auth.checkUserAuth, article.getHomepageInfo);
 
-router.get('/news', user.checkUserAuth, article.getArticleById);
+// GET (News Page)
+router.get('/news', auth.checkUserAuth, article.getArticleById);
 
-router.get('/contact', user.checkUserAuth, (req, res) => { 
+// GET (Contact Page)
+router.get('/contact', auth.checkUserAuth, (req, res) => { 
     res.render('contact', { isLoggedIn: res.locals.isLoggedIn }); 
 });
 
-router.get('/login', user.checkUserNotAuth, (req, res) => { 
+// GET (Login Page)
+router.get('/login', auth.checkUserNotAuth, (req, res) => { 
     res.render('login', { isLoggedIn: res.locals.isLoggedIn }); 
 });
 
-router.get('/signup', user.checkUserNotAuth, (req, res) => {
+// GET (Signup Page)
+router.get('/signup', auth.checkUserNotAuth, (req, res) => {
     res.render('signup', { isLoggedIn: res.locals.isLoggedIn }); 
 });
 
-router.get('/logout', user.checkUserAuth, (req, res) => {
+// GET (Logout Page)
+router.get('/logout', auth.checkUserAuth, (req, res) => {
     if (res.locals.isLoggedIn === false) {
         // Add flash message: (Not logged in)
         res.redirect('/login');

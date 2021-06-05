@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Site - Admin</title>
+    <link rel="stylesheet" href="/styles/astyles.css">
+</head>
+<body>
+    <%- include('../partials/admin/header.ejs') %>
+    <main>
+        <div class="form-card">
+            <h1 style="padding-bottom: 0;">Create News Post</h1>
+            <form action="/admin/createnews" method="POST" onsubmit="return confirm('Are you sure you want to submit this article?');">
+                <p>
+                    <label for="title">Title: </label>
+                    <input type="text" id="title" name="title" required>
+                </p>
+                <p>
+                    <label for="message">Message: </label>
+                    <textarea name="message" id="message" cols="20" rows="10" required></textarea>
+                </p>
+                    <input type="submit" value="Create Post">
+            </form>
+        </div>
+    </main>
+    <%- include('../partials/admin/footer.ejs') %>
+</body>
+</html>

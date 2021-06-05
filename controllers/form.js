@@ -1,7 +1,5 @@
 const { pool } = require("../db/index");
 
-const user = require('../controllers/user');
-
 module.exports = {
     getForms: (req, res) => {
         pool.query(

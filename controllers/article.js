@@ -74,6 +74,17 @@ module.exports = {
             );
         }
     },
+    createArticle: (req, res) => {
+        let { title, message } = req.body;
+        let author = req.user.id;
+        pool.query(
+            `INSERT INTO news (title, author, content) VALUES ($1, $2, $3)`, [title, author, message], (err, results) => {
+                if (err) { throw err; }
+                req.flash('success_msg', "Successfully created article");
+                res.redirect('/admin/news');
+            }
+        )
+    },
     editArticle: (req, res) => {
         let { title, message } = req.body;
         if (typeof req.query.id === undefined) {

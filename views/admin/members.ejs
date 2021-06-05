@@ -27,7 +27,7 @@
                 <td id="role<%= i+1 %>"><%= results.rows[i].role %></td>
                 <td>
                     <a href="/admin/edituser?id=<%= results.rows[i].id %>">Edit</a>
-                    <a href="/admin/banuser?id=<%= results.rows[i].id %>">Ban</a>
+                    <a href="/admin/deleteuser?id=<%= results.rows[i].id %>">Delete</a>
                 </td>
             </tr>
             <% } %>
