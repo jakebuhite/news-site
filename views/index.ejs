@@ -27,8 +27,8 @@
             </div>
             <% } %>
         </main>
-        <div class="sidebar">
-            <div class="sidebar-card">
+        <div class="sidebar-container">
+            <div class="sidebar">
                 <div class="recent-posts">
                     <div class="sidebar-header">Recent Posts</div>
                     <ul><% for (var i = 0; i < newsResults.rowCount && i < 5; i++) { %>
@@ -37,8 +37,7 @@
                 </div>
                 <div class="site-stats">
                     <div class="sidebar-header">Site Statistics</div>
-                    <p>Total Posts: <%= newsResults.rowCount %></p>
-                    <p>Total Likes: 0</p>
+                    <p style="padding-top: 5px;">Total Posts: <%= newsResults.rowCount %></p>
                     <p>Total Members: <%= userResults.rowCount %></p>
                     <p>Newest Member: <%= userResults.rows[0].username %></p>
                 </div>

@@ -14,6 +14,25 @@ module.exports = {
             }
         );
     },
+    getFormById: (req, res) => {
+        if (typeof req.query.id === undefined) {
+            req.flash('error_msg', "This form does not exist");
+            res.redirect('/admin/forms');
+        } else {
+            let formID = req.query.id;
+            pool.query( 
+                `SELECT * FROM forms WHERE forms.id=$1`, [formID], (err, results) => {
+                    if (err) { throw err; }
+                    if (results.rows.length == 0) {
+                        req.flash('error_msg', "This form does not exist");
+                        res.redirect('/admin/forms');
+                    } else {
+                        res.render('admin/viewform', { results });
+                    }
+                }
+            );
+        }
+    },
     createForm: (req, res) => {
         let { cname, email, message } = req.body;
         pool.query(

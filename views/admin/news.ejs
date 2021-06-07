@@ -11,31 +11,32 @@
     <%- include('../partials/admin/header.ejs') %>
     <main>
         <h1>News</h1>
-        <div class="create-news-btn"><a href="/admin/createnews">New Post</a></div>
         <%- include('../partials/statuses.ejs') %>
         <table>
-            <tr>
-                <th>ID</th>
-                <th>Article</th>
-                <th>Author</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Article</th>
+                    <th>Author</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
             <% for (var i = 0; i < results.rowCount; i++) { %>
             <tr>
-                <td id="id<%= i+1 %>"><%= results.rows[i].id %></td>
-                <td id="title<%= i+1 %>"><%= results.rows[i].title %></td>
-                <td id="author<%= i+1 %>"><%= results.rows[i].username %></td>
-                <td id="date<%= i+1 %>"></td>
+                <td scope="row" data-label="ID" id="id<%= i+1 %>"><%= results.rows[i].id %></td>
+                <td data-label="Article" id="title<%= i+1 %>"><a href="/news?id=<%= results.rows[i].id %>"><%= results.rows[i].title %></a></td>
+                <td data-label="Author" id="author<%= i+1 %>"><%= results.rows[i].username %></td>
+                <td data-label="Date" id="date<%= i+1 %>"></td>
                 <script>document.getElementById("date<%= i+1 %>").innerHTML = formatDate("<%= results.rows[i].date %>");</script>
-                <td>
-                    <a href="/news?id=<%= results.rows[i].id %>">View</a>
+                <td data-label="Actions">
                     <a href="/admin/editnews?id=<%= results.rows[i].id %>">Edit</a>
                     <a href="/admin/deletenews?id=<%= results.rows[i].id %>">Delete</a>
                 </td>
             </tr>
             <% } %>
         </table>
+        <div class="admin-btn"><a href="/admin/createnews">New Post</a></div>
     </main>
     <%- include('../partials/admin/footer.ejs') %>
 </body>

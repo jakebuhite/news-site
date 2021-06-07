@@ -13,21 +13,23 @@
         <h1>Forms</h1>
         <%- include('../partials/statuses.ejs') %>
         <table>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
             <% for (var i = 0; i < results.rowCount; i++) { %>
             <tr>
-                <td id="id<%= i+1 %>"><%= results.rows[i].id %></td>
-                <td id="name<%= i+1 %>"><%= results.rows[i].name %></td>
-                <td id="email<%= i+1 %>"><%= results.rows[i].email %></td>
-                <td id="date<%= i+1 %>"></td>
+                <td data-label="ID" id="id<%= i+1 %>"><%= results.rows[i].id %></td>
+                <td data-label="Name" id="name<%= i+1 %>"><%= results.rows[i].name %></td>
+                <td data-label="Email" id="email<%= i+1 %>"><%= results.rows[i].email %></td>
+                <td data-label="Date" id="date<%= i+1 %>"></td>
                 <script>document.getElementById("date<%= i+1 %>").innerHTML = formatDate("<%= results.rows[i].date %>");</script>
-                <td>
+                <td data-label="Actions">
                     <a href="/admin/viewform?id=<%= results.rows[i].id %>">View</a>
                     <a href="/admin/deleteform?id=<%= results.rows[i].id %>">Delete</a>
                 </td>

@@ -23,7 +23,7 @@ module.exports = {
             if (req.user.role === 2) {
                 return next();
             } else {
-                req.flash('success_msg', "You do not have permission to view that page");
+                req.flash('error_msg', "You do not have permission to view that page");
                 res.redirect("/");
             }
         } else {

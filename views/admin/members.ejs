@@ -12,20 +12,22 @@
         <h1>Members</h1>
         <%- include('../partials/statuses.ejs') %>
         <table>
-            <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Actions</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
             <% for (var i = 0; i < results.rowCount; i++) { %>
             <tr>
-                <td id="id<%= i+1 %>"><%= results.rows[i].id %></td>
-                <td id="username<%= i+1 %>"><%= results.rows[i].username %></td>
-                <td id="email<%= i+1 %>"><%= results.rows[i].email %></td>
-                <td id="role<%= i+1 %>"><%= results.rows[i].role %></td>
-                <td>
+                <td data-label="ID" id="id<%= i+1 %>"><%= results.rows[i].id %></td>
+                <td data-label="Username" id="username<%= i+1 %>"><%= results.rows[i].username %></td>
+                <td data-label="Email" id="email<%= i+1 %>"><%= results.rows[i].email %></td>
+                <td data-label="Role" id="role<%= i+1 %>"><%= results.rows[i].role %></td>
+                <td data-label="Actions">
                     <a href="/admin/edituser?id=<%= results.rows[i].id %>">Edit</a>
                     <a href="/admin/deleteuser?id=<%= results.rows[i].id %>">Delete</a>
                 </td>

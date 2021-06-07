@@ -9,17 +9,24 @@ body {
     font-size: 16px;
     color: #282828;
 }
+
 /* Base CSS */
 header {
+    height: 65px;
+}
+footer {
+    height: 75px;
+}
+header, footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    height: 65px;
     width: 100%;
+    color: rgba(245, 245, 245, 1);
+    background-color: rgba(40, 40, 40, 1);
     padding: 0 25px;
-    box-shadow: 0 1px 2px #777;
 }
-.logo {
+.logo, .back-to-site {
     flex-grow: 1;
 }
 nav li {
@@ -29,7 +36,7 @@ nav li {
 }
 a {
     text-decoration: none;
-    color: #282828;
+    color: rgba(245, 245, 245, 1);
 }
 a:hover {
     text-decoration: underline;
@@ -45,19 +52,8 @@ main {
     gap: 5px;
 }
 h1 {
-    padding-bottom: 10px;
-}
-footer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 75px;
-    width: 100%;
-    padding: 0 25px;
-    box-shadow: 0 -1px 2px #777;
-}
-.back-to-site {
-    flex-grow: 1;
+    font-size: 2.75em;
+    padding-bottom: 25px;
 }
 
 /* Forms/News/Members Page CSS */
@@ -72,13 +68,29 @@ th {
     color: whitesmoke;
 }
 td a {
+    color: #282828;
     text-decoration: underline;
+}
+.admin-btn {
+    text-align: center;
+    padding: 10px;
+    border: 2px solid rgba(40, 40, 40, 1);
+    border-radius: 15px;
+    background-color: rgba(40, 40, 40, 1);
+    color: rgba(245, 245, 245, 1);
+    margin: 10px 5px;
+}
+.admin-btn:hover {
+    border: 2px solid rgba(83, 83, 83, 1);
+    background-color: rgba(83, 83, 83, 1);
+}
+.admin-btn a:hover {
+    text-decoration: none;
 }
 
 /* View Form CSS */
-.form-viewer {
-    width: 75%;
-    min-width: 310px;
+.form-card.viewer > * {
+    padding: 10px 0;
 }
 
 /* Edit Form CSS */
@@ -90,16 +102,10 @@ td a {
     height: 100%;
     padding: 10px;
     background-color: #e8e8e8;
-    border: 2px solid #282828;
-    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
 }
 .form-card .info {
     padding: 25px;
-}
-.form-card h1 {
-    text-decoration: underline;
-    font-size: 4.5em;
-    padding-bottom: 25px;
 }
 form {
     width: 100%;
@@ -144,6 +150,31 @@ textarea:focus, input:focus{
         min-width: 0;
     }
     main {
-        padding: 15px 0;
+        padding: 15px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    table {
+        width: 90%;
+    }
+    table thead {
+        display: none;
+    }
+    table tr, table td {
+        display: block;
+    }
+    table tr {
+        padding-right: 5px;
+        background-color: #e8e8e8;
+        border: 1px solid #282828;
+        margin: 5px 0;
+    }
+    table td {
+        text-align: right;
+    }
+    table td::before {
+        content: attr(data-label);
+        float: left;
     }
 }

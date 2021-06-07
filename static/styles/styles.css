@@ -7,7 +7,7 @@
 }
 body {
     font-size: 16px;
-    color: #282828;
+    color: rgba(40, 40, 40, 1);
 }
 
 /* Base CSS for Wrapper */
@@ -50,13 +50,18 @@ body {
 
 /* Base CSS */
 header {
+    grid-area: header;
+}
+footer {
+    grid-area: footer;
+}
+header, footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     width: 100%;
-    color: whitesmoke;
-    background-color: #282828;
-    grid-area: header;
+    color: rgba(245, 245, 245, 1);
+    background-color: rgba(40, 40, 40, 1);
     padding: 0 25px;
 }
 nav li {
@@ -64,7 +69,7 @@ nav li {
     list-style-type: none;
     padding: 5px;
 }
-.logo {
+.logo, .copyright {
     flex-grow: 1;
 }
 main {
@@ -76,29 +81,16 @@ main ul:empty {
 }
 a {
     text-decoration: none;
-    color: whitesmoke;
+    color: rgba(245, 245, 245, 1);
 }
 a:hover {
     text-decoration: underline;
-}
-footer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-    color: whitesmoke;
-    background-color: #282828;
-    grid-area: footer;
-    padding: 0 25px;
-}
-.copyright {
-    flex-grow: 1;
 }
 
 /* CSS for homepage */
 .news-card {
     overflow: hidden;
-    background-color: #e8e8e8;
+    background-color: rgba(232, 232, 232, 1);
     margin: 15px 25px;
     padding: 5px 5px 20px 5px;
 }
@@ -121,30 +113,30 @@ footer {
     float: right;
     text-align: center;
     padding: 5px;
-    border: 2px solid #282828;
+    border: 2px solid rgba(40, 40, 40, 1);
     border-radius: 15px;
-    background-color: #282828;
-    color: grey;
+    background-color: rgba(40, 40, 40, 1);
+    color: rgba(245, 245, 245, 1);
     width: 150px;
     margin-right: 5px;
-    transition: color 0.75s;
 }
 .news-btn:hover {
-    color: whitesmoke;
+    border: 2px solid rgba(83, 83, 83, 1);
+    background-color: rgba(83, 83, 83, 1);
 }
-.sidebar {
+.sidebar-container {
     width: 100%;
     grid-area: sidebar;
 }
-.sidebar-card {
-    background-color: #e8e8e8;
+.sidebar {
+    background-color: rgba(232, 232, 232, 1);
     margin: 15px 25px;
 }
-.sidebar-card .sidebar-header, .news-title {
+.sidebar .sidebar-header, .news-title {
     text-align: center;
-    background-color: #282828;
+    background-color: rgba(40, 40, 40, 1);
     padding: 10px;
-    color: whitesmoke;
+    color: rgba(245, 245, 245, 1);
 }
 .recent-posts li {
     list-style-position: inside;
@@ -152,7 +144,7 @@ footer {
     padding: 5px;
 }
 .recent-posts li a {
-    color: #282828;
+    color: rgba(40, 40, 40, 1);
 }
 .recent-posts li a:hover {
     text-decoration: underline;
@@ -169,18 +161,15 @@ footer {
     justify-content: center;
     height: 100%;
     padding: 10px;
-    background-color: #e8e8e8;
-    border: 2px solid #282828;
-    border-radius: 15px;
+    background-color: rgba(232, 232, 232, 1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
 }
 .form-card .info {
     text-align: center;
     padding: 25px;
 }
 .form-card h1 {
-    text-decoration: underline;
     font-size: 4.5em;
-    padding-bottom: 25px;
 }
 form {
     text-align: center;
@@ -194,20 +183,21 @@ input, textarea {
 }
 input[type=text], input[type=password], input[type=email], textarea {
     padding: 5px;
-    border: 1px solid white;
+    border: 1px solid rgba(255, 255, 255, 1);
     border-radius: 15px;
 }
 input[type=submit] {
     font-size: 1.15em;
     margin-top: 10px;
-    background-color: #535353;
-    border: 1px solid #535353;
-    color: whitesmoke;
-    padding: 10px 15px;
+    background-color: rgba(40, 40, 40, 1);
+    border: 1px solid rgba(40, 40, 40, 1);
+    border-radius: 10px;
+    color: rgba(245, 245, 245, 1);
+    padding: 7px 10px;
 }
 input[type=submit]:hover {
-    background-color: #282828;
-    border: 1px solid #282828;
+    background-color: rgba(83, 83, 83, 1);
+    border: 1px solid rgba(83, 83, 83, 1);
 }
 textarea {
     resize: none;
@@ -220,7 +210,7 @@ textarea:focus, input:focus{
 article {   
     display: flex;
     flex-flow: row wrap;
-    background-color: #e8e8e8;
+    background-color: rgba(232, 232, 232, 1);
     padding: 10px;
 }
 article h1 {
@@ -246,6 +236,28 @@ article h1 {
 }
 .left-content, .right-content {
     padding-bottom: 10px;
+}
+
+/* Statuses */
+.error_msg {
+    background-color: rgba(244, 103, 103, 1);
+    color: rgba(106, 8, 8, 1);
+    border: 2px solid rgba(106, 8, 8, 1);
+}
+.success_msg {
+    background-color: rgba(117, 236, 114, 1);
+    color: rgba(16, 131, 13, 1);
+    border: 2px solid rgba(16, 131, 13, 1);
+}
+.error_msg, .success_msg {
+    width: 50%;
+    margin-top: 15px;
+    text-align: center;
+    padding: 8px;
+    border-radius: 25px;
+}
+.success_msg li, .error_msg li {
+    list-style-type: none;
 }
 
 /* Responsiveness */
@@ -291,5 +303,14 @@ article h1 {
     }
     article h1 {
         font-size: 1.35em;
+    }
+    .news-avatar {
+        display: none;
+    }
+    .news-content {
+        padding-top: 5px;
+    }
+    .error_msg, .success_msg {
+        width: 75%;
     }
 }

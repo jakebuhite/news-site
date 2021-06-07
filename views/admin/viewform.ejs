@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Site - Admin</title>
     <link rel="stylesheet" href="/styles/astyles.css">
+    <script src="/scripts/formatDate.js"></script>
 </head>
 <body>
     <%- include('../partials/admin/header.ejs') %>
     <main>
-        <div class="form-viewer">
-            <h1>Form #1</h1>
-            <div class="form-name">Name: John Doe</span>
-            <div class="form-email">Email: john.doe@gmail.com</span>  
-            <div class="form-date">Date: 5/27/21</span>
-            <div class="form-msg">Message:</span>  
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus justo ex, ac imperdiet mi dictum nec. Maecenas malesuada luctus metus. Maecenas orci lorem, accumsan nec nibh quis, luctus venenatis mi. Duis pulvinar, arcu a condimentum semper, mauris tortor tempus ipsum, vitae ornare nibh ex ut diam. Etiam vulputate, massa vitae porta luctus, diam tellus dignissim enim, sed ultrices neque urna sed velit. Vivamus nec justo a ipsum cursus consectetur sed eu dui. Integer non dui ut metus dignissim egestas non in velit. In vel ante sapien. Nam ut volutpat tellus. Morbi sit amet auctor nisl, vitae rhoncus metus. Donec magna ex, maximus vitae tristique commodo, mollis malesuada risus. Proin blandit auctor purus. Donec placerat tortor at est rhoncus posuere. Curabitur id sapien faucibus, pretium neque sed, semper turpis. Nam interdum bibendum sem, eget imperdiet nunc hendrerit vel. Nunc sit amet nulla odio. Sed id ultrices odio. Quisque interdum, lacus ac viverra rhoncus, enim risus mollis urna, nec luctus tellus erat vitae felis. Proin interdum venenatis facilisis. Mauris mollis efficitur odio ac accumsan. Nunc sit amet imperdiet magna. Integer vitae purus sapien. Donec rutrum nibh et elementum vulputate. Nunc mattis erat purus. Suspendisse sollicitudin tincidunt mollis. Aliquam sit amet posuere diam. Nunc vel mauris eget neque eleifend cursus. Maecenas malesuada, dolor sed mollis tempor, ipsum tortor laoreet est, eget blandit arcu sapien sed ante. Nunc non leo sit amet ipsum tempor cursus. Curabitur sit amet tempus tellus. Sed blandit dictum viverra. Pellentesque vulputate elit nec ullamcorper sagittis. Sed blandit metus</p>
+        <div class="form-card viewer">
+            <h1>Form #<%= results.rows[0].id %></h1>
+            <div id="form-name"><strong>Name:</strong> <%= results.rows[0].name %></div>
+            <div id="form-email"><strong>Email:</strong> <%= results.rows[0].email %></div>  
+            <div id="form-date"></div>
+            <script>document.getElementById("form-date").innerHTML = '<strong>Date: </strong>' + formatDate("<%= results.rows[0].date %>");</script>
+            <div id="form-msg"><strong>Message:</strong></div>  
+            <p><%= results.rows[0].message %></p>
         </div>
-        <a href="/admin/forms"><div class="go-back-btn" style="float: left; margin: 10px 5px;">Go Back</div></a>
+        <a href="/admin/forms"><div class="admin-btn">Go Back</div></a>
     </main>
     <%- include('../partials/admin/footer.ejs') %>
 </body>

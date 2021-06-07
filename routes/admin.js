@@ -15,10 +15,7 @@ router.get('/', auth.checkUserRole, (req, res) => {
 // GET (Forms)
 router.get('/forms', auth.checkUserRole, form.getForms);
 router.get('/deleteform', auth.checkUserRole, form.deleteForm);
-router.get('/viewform', auth.checkUserRole, (req, res) => {
-    var newsID = req.query.id;
-    res.render('admin/viewform', {id: newsID});
-});
+router.get('/viewform', auth.checkUserRole, form.getFormById);
 
 // GET (Users)
 router.get('/members', auth.checkUserRole, user.getUsers);
