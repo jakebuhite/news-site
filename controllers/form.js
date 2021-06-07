@@ -7,7 +7,7 @@ module.exports = {
                 if (err) { throw err; }
                 if (results.rows.length == 0) {
                     req.flash('error_msg', "No forms have been completed");
-                    res.render('admin/forms');
+                    res.render('admin/forms', { results });
                 } else {
                     res.render('admin/forms', { results });
                 }

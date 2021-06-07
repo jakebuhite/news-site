@@ -51,9 +51,12 @@ main {
     text-align: center;
     gap: 5px;
 }
+main ul:empty {
+    display: none;
+}
 h1 {
     font-size: 2.75em;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
 }
 
 /* Forms/News/Members Page CSS */
@@ -141,6 +144,28 @@ textarea {
 }
 textarea:focus, input:focus{
     outline: none;
+}
+
+/* Statuses */
+.error_msg {
+    background-color: rgba(244, 103, 103, 1);
+    color: rgba(106, 8, 8, 1);
+    border: 2px solid rgba(106, 8, 8, 1);
+}
+.success_msg {
+    background-color: rgba(117, 236, 114, 1);
+    color: rgba(16, 131, 13, 1);
+    border: 2px solid rgba(16, 131, 13, 1);
+}
+.error_msg, .success_msg {
+    width: 50%;
+    text-align: center;
+    padding: 8px;
+    border-radius: 25px;
+    margin-bottom: 15px;
+}
+.success_msg li, .error_msg li {
+    list-style-type: none;
 }
 
 /* Responsiveness */

@@ -5,32 +5,21 @@ module.exports = {
         pool.query(
             `SELECT news.id, news.title, news.content, news.date, users.username, users.avatar FROM users INNER JOIN news ON news.author = users.id ORDER BY news.id`, (err, results) => {
                 if (err) { throw err; }
-                if (results.rows.length == 0) {
-                    req.flash('error_msg', "No articles have been published");
-                    res.render('admin/news', { errors });
-                } else {
-                    res.render('admin/news', { results });
-                }
+                res.render('admin/news', { results });
             }
         );
     },
     getHomepageInfo: (req, res) => {
-        let noNews = false;
         pool.query(
             `SELECT news.id, news.title, news.content, news.date, users.username, users.avatar FROM users INNER JOIN news ON news.author = users.id ORDER BY news.id DESC`, (newsErr, newsResults) => {
                 if (newsErr) { throw newsErr; }
                 if (newsResults.rows.length == 0) {
                     req.flash('error_msg', "No articles have been published");
-                    noNews = true;
                 }
                 pool.query(
                     `SELECT users.username FROM users ORDER By users.id DESC`, (userErr, userResults) => {
                         if (userErr) { throw userErr; }
-                        if (noNews === true) {
-                            res.render('index', { userResults });
-                        } else {
-                            res.render('index', { newsResults, userResults });
-                        }
+                        res.render('index', { newsResults, userResults });
                     }
                 );
             }
