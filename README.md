@@ -12,7 +12,3 @@ The intended purpose of this project was to work on using Node and Express. It a
 
   #### The Bad
   There are a few parts of the project that can be worked on. There are a few status errors that need to be in place. Also, the some of the controllers can definitely be   improved. I plan on making revisions to the news site often.
-
-### TODO
-You can view the TODO list I've made for this project here:
-https://trello.com/b/SGx0S8nL/news-site
